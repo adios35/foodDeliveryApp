@@ -1,0 +1,6 @@
+.active {
+  @apply -translate-y-[11%] visible opacity-100;
+}
+.inactive {
+  @apply translate-y-3/4 invisible opacity-0;
+}
