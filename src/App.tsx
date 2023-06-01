@@ -6,7 +6,7 @@ import ProductInfo from "./pages/productInfo";
 
 const App = () => {
   return (
-    <div className="p-2 bg-yellow-50  px-[12%]">
+    <div className="p-2 bg-yellow-50  px-[8%]">
       <NavBar />
       <Home />
       <BottomNav />

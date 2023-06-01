@@ -15,6 +15,8 @@ interface FoodProduct {
 }
 
 const ProductInfo = ({ selectedProduct, setSelectedProduct }: Props) => {
+  const [quantity, setQuantity] = React.useState(0);
+
   const handleContainerClick = (e: React.MouseEvent<HTMLDivElement>) => {
     if (e.target === e.currentTarget) {
       setSelectedProduct && setSelectedProduct(null);
@@ -48,7 +50,7 @@ const ProductInfo = ({ selectedProduct, setSelectedProduct }: Props) => {
         exit={{ y: "100%" }}
         initial={{ y: "100%" }}
         animate={{ y: 0 }}
-        className="modal-content bg-white  rounded-t-[10%] absolute -bottom-20 w-[80%] h-full  shadow-lg p-6 gap-8 flex flex-col"
+        className="modal-content bg-white  rounded-t-3xl   absolute -bottom-32 w-full h-full  shadow-lg p-6 gap-8 flex flex-col"
         onClick={(e) => e.stopPropagation()}
       >
         <img
@@ -58,9 +60,29 @@ const ProductInfo = ({ selectedProduct, setSelectedProduct }: Props) => {
         />
         <div className="info w-full space-y-5">
           <div className="bg-mainRed px-3 py-[4px] items-center rounded-full w-20 flex justify-between   text-white  mx-auto text-lg ">
-            <button className="decrement">-</button>
-            <button className="total">1</button>
-            <button className="increment">+</button>
+            <button
+              onClick={() => {
+                setQuantity((prev) => {
+                  return prev + 1;
+                });
+              }}
+              className="increment"
+            >
+              +
+            </button>
+            <span className="total">{quantity}</span>
+            <button
+              onClick={() =>
+                setQuantity((prev) => {
+                  if (prev === 1) return 0;
+                  if (prev > 0) return prev - 1;
+                  return prev; // Prevent negative values
+                })
+              }
+              className="decrement"
+            >
+              -
+            </button>
           </div>
           <div className="product-desc ">
             <div className="info  flex justify-between">
