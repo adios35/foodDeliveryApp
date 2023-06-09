@@ -7,7 +7,7 @@ interface Props {
 }
 
 interface FoodProduct {
-  id?: number;
+  id?: number | string;
   img: any;
   title: string;
   desc: string;
@@ -42,7 +42,7 @@ const ProductInfo = ({ selectedProduct, setSelectedProduct }: Props) => {
       exit={{ opacity: 0 }}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      className="fixed top-0 left-0 z-30 flex items-center justify-center w-screen h-screen bg-black"
+      className="fixed top-0 left-0 z-30 flex items-center justify-center w-screen h-screen "
       style={{ backgroundColor: "rgba(0, 0, 0, 0.5)" }}
       onClick={handleContainerClick}
     >

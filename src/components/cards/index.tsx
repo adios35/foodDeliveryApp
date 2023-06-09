@@ -1,15 +1,9 @@
 // Card.js
 import React from "react";
-interface FoodProduct {
-  id?: number;
-  img: any;
-  title: string;
-  desc: string;
-  price: number;
-}
+import { FoodProduct } from "../types/productTypes";
 
 interface props {
-  id?: number;
+  id?: number | string;
   img: any;
   title: string;
   desc: string;
@@ -17,12 +11,13 @@ interface props {
   selectedProduct: FoodProduct | null;
   setSelectedProduct: React.Dispatch<React.SetStateAction<FoodProduct | null>>;
 }
-const Card = ({ img, title, desc, price, setSelectedProduct }: props) => {
+const Card = ({ img, title, desc, price, setSelectedProduct, id }: props) => {
   function handleModal() {
     setSelectedProduct({ desc, img, price, title });
   }
   return (
     <div
+      key={id}
       onClick={handleModal}
       className="card text-center space-y-[4px] overflow-hidden cursor-pointer h-[200px]  w-[250px]  rounded-3xl  shadow-xl   border-gray-100"
     >
